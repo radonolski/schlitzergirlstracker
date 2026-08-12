@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Night Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">🎮 STAT-TRACKER</div>
+        <ul>
+            <li id="nav-home" class="active">Home</li>
+            <li id="nav-stats">Stats</li>
+        </ul>
+    </nav>
+
+    <!-- LANDING PAGE -->
+    <main id="page-home" class="page active">
+        <h1>Wähle ein Spiel</h1>
+        <div class="game-grid">
+            <div class="game-card" data-game="monopoly">
+                <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffaed?q=80&w=400&auto=format&fit=crop" alt="Monopoly">
+                <h2>Monopoly</h2>
+            </div>
+            <div class="game-card" data-game="golf">
+                <img src="https://images.unsplash.com/photo-1592919505780-303950717480?q=80&w=400&auto=format&fit=crop" alt="Golf">
+                <h2>Golf with your Friends</h2>
+            </div>
+            <div class="game-card" data-game="worms">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop" alt="Worms">
+                <h2>Worms</h2>
+            </div>
+            <div class="game-card" data-game="uch">
+                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=400&auto=format&fit=crop" alt="Chicken Horse">
+                <h2>Ultimate Chicken Horse</h2>
+            </div>
+        </div>
+    </main>
+
+    <!-- GAME DETAIL PAGE -->
+    <main id="page-game" class="page hidden">
+        <button class="back-btn">← Zurück</button>
+        <h1 id="game-title">Spielname</h1>
+
+        <div class="form-container">
+            <h3>Neuer Eintrag</h3>
+            <form id="entry-form">
+                <div class="input-group">
+                    <label>Datum</label>
+                    <input type="date" id="game-date" required>
+                </div>
+                
+                <div id="monopoly-extras" class="hidden">
+                    <div class="input-group checkbox-group">
+                        <input type="checkbox" id="game-aborted">
+                        <label for="game-aborted" class="red-text">Spiel abgebrochen?</label>
+                    </div>
+                    <h4>Zugreihenfolge</h4>
+                    <div class="player-inputs">
+                        <label>Carlo: <input type="number" min="1" max="3" id="turn-carlo"></label>
+                        <label>Jonas: <input type="number" min="1" max="3" id="turn-jonas"></label>
+                        <label>Marco: <input type="number" min="1" max="3" id="turn-marco"></label>
+                    </div>
+                </div>
+
+                <h4>Platzierung</h4>
+                <div class="player-inputs">
+                    <label>Carlo: <input type="number" min="1" max="3" id="place-carlo" required></label>
+                    <label>Jonas: <input type="number" min="1" max="3" id="place-jonas" required></label>
+                    <label>Marco: <input type="number" min="1" max="3" id="place-marco" required></label>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submit-btn">Speichern</button>
+            </form>
+        </div>
+
+        <div class="history-container">
+            <h3>Letzte 10 Spiele</h3>
+            <ul id="history-list" class="history-list">
+                <!-- Wird per JS befüllt -->
+            </ul>
+            <button id="load-all-btn" class="secondary-btn">Alle ansehen</button>
+        </div>
+    </main>
+
+    <!-- STATS PAGE -->
+    <main id="page-stats" class="page hidden">
+        <h1>Leaderboard</h1>
+        <p class="subtitle">Klicke auf die Spaltenköpfe, um zu sortieren.</p>
+        <div class="table-container">
+            <table id="stats-table">
+                <thead>
+                    <tr>
+                        <th data-sort="name">Spieler ↕</th>
+                        <th data-sort="total">Wins Gesamt ↕</th>
+                        <th data-sort="monopoly">Monopoly ↕</th>
+                        <th data-sort="golf">Golf ↕</th>
+                        <th data-sort="worms">Worms ↕</th>
+                        <th data-sort="uch">UCH ↕</th>
+                    </tr>
+                </thead>
+                <tbody id="stats-body">
+                    <!-- Wird per JS befüllt -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Firebase SDKs (Modulare Version) -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
